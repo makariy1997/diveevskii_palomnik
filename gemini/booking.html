@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Бронирование комнаты — Гостевой дом «Дивеевский паломник»</title>
+  <meta name="description" content="Онлайн-бронирование комнат в гостевом доме «Дивеевский паломник» без предоплаты. Выберите даты, комнату и получите мгновенное подтверждение.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .booking-page-wrap {
+      padding: 7.5rem 0 5rem;
+      min-height: 100vh;
+    }
+    .booking-layout {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .booking-panel {
+      background: var(--bg-surface);
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+    }
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+    }
+    .form-control {
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(24, 29, 26, 0.18);
+      background: var(--bg-primary);
+      font-family: var(--font-sans);
+      font-size: 0.98rem;
+      color: var(--text-primary);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 0 3px var(--accent-gold-light);
+    }
+    .room-select-cards {
+      display: grid;
+      gap: 1rem;
+      margin: 1rem 0 1.75rem;
+    }
+    .room-radio-card {
+      display: grid;
+      grid-template-columns: 110px 1fr auto;
+      gap: 1.1rem;
+      align-items: center;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--border-subtle);
+      background: var(--bg-primary);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .room-radio-card.is-selected {
+      border-color: var(--accent-gold);
+      background: #FFFFFF;
+      box-shadow: var(--shadow-soft);
+    }
+    .room-radio-card img {
+      width: 110px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+    }
+    .summary-sticky {
+      position: sticky;
+      top: 6rem;
+      background: var(--bg-dark);
+      color: var(--text-on-dark);
+      padding: 2.25rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-hover);
+    }
+    .summary-sticky h3 {
+      color: #EAD2B0;
+      font-size: 1.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.95rem;
+    }
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-top: 1.25rem;
+      margin-top: 0.5rem;
+    }
+    .summary-total strong {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      color: #EAD2B0;
+    }
+    @media (max-width: 960px) {
+      .booking-layout { grid-template-columns: 1fr; }
+      .form-grid-2, .room-radio-card { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header is-scrolled">
+    <div class="header-inner">
+      <a class="brand-logo" href="index.html">
+        <span class="brand-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4M9 4h6"/><path d="M12 6c-3.5 3.5-6 6.5-6 10a6 6 0 0 0 12 0c0-3.5-2.5-6.5-6-10Z"/><path d="M5 21h14"/></svg>
+        </span>
+        <span class="brand-text">Дивеевский паломник<small>онлайн-бронирование</small></span>
+      </a>
+      <div class="header-actions">
+        <a href="index.html" class="btn btn-outline">← На главную</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="booking-page-wrap">
+    <div class="container">
+      <div style="margin-bottom: 2.25rem;">
+        <span class="eyebrow">Без предоплаты · Оплата при заселении</span>
+        <h1 class="section-title">Забронировать комнату</h1>
+        <p class="section-subtitle">Укажите даты поездки, выберите подходящую комнату и оставьте контакты — мы сразу зафиксируем бронь за вами.</p>
+      </div>
+
+      <div class="booking-layout">
+        <form id="booking-full-form" class="booking-panel">
+          <h2 style="font-size: 1.65rem; margin-bottom: 1.25rem;">1. Даты и количество гостей</h2>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="b-checkin">Дата заезда (с 14:00)</label>
+              <input type="date" id="b-checkin" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="b-checkout">Дата выезда (до 12:00)</label>
+              <input type="date" id="b-checkout" class="form-control" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="b-guests">Количество гостей</label>
+            <select id="b-guests" class="form-control">
+              <option value="1">1 гость</option>
+              <option value="2" selected>2 гостя</option>
+              <option value="3">3 гостя</option>
+              <option value="4">4 гостя (семья / группа)</option>
+            </select>
+          </div>
+
+          <h2 style="font-size: 1.65rem; margin: 2rem 0 0.75rem;">2. Выберите комнату</h2>
+          <div id="booking-room-options" class="room-select-cards"></div>
+
+          <h2 style="font-size: 1.65rem; margin: 2rem 0 1rem;">3. Контактные данные</h2>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="b-name">Ваше имя</label>
+              <input type="text" id="b-name" class="form-control" placeholder="Например, Мария Ивановна" required>
+            </div>
+            <div class="form-group">
+              <label for="b-phone">Телефон для связи</label>
+              <input type="tel" id="b-phone" class="form-control" placeholder="+7 (999) 000-00-00" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="b-comment">Пожелания (ранний заезд, дети, вопросы)</label>
+            <textarea id="b-comment" rows="3" class="form-control" placeholder="Напишите, если приезжаете ранним поездом или нужна подсказка по автобусу"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1rem;">
+            Подтвердить бронирование (без предоплаты)
+          </button>
+
+          <div id="booking-success-box" hidden style="margin-top: 1.5rem; padding: 1.5rem; border-radius: var(--radius-md); background: #E9F3EC; border: 1px solid #2C4235; color: #18201C;">
+            <h3 style="font-size: 1.45rem; margin-bottom: 0.5rem;">Заявка сформирована!</h3>
+            <p style="margin-bottom: 1rem;">Чтобы хозяева мгновенно увидели вашу бронь, отправьте готовую карточку одним нажатием в WhatsApp или позвоните нам:</p>
+            <div style="display:flex; flex-wrap:wrap; gap:0.75rem;">
+              <a id="whatsapp-confirm-link" href="#" target="_blank" rel="noopener" class="btn btn-primary">Отправить бронь в WhatsApp ↗</a>
+              <a href="tel:+79302848469" class="btn btn-outline">Позвонить +7 930 284-84-69</a>
+            </div>
+          </div>
+        </form>
+
+        <!-- Sticky Summary Sidebar -->
+        <aside class="summary-sticky">
+          <h3>Ваша поездка</h3>
+          <div class="summary-row">
+            <span>Комната:</span>
+            <strong id="sum-room">Двухместная «Утренняя»</strong>
+          </div>
+          <div class="summary-row">
+            <span>Заезд — Выезд:</span>
+            <strong id="sum-dates">—</strong>
+          </div>
+          <div class="summary-row">
+            <span>Количество ночей:</span>
+            <strong id="sum-nights">2 ночи</strong>
+          </div>
+          <div class="summary-row">
+            <span>Гостей:</span>
+            <strong id="sum-guests">2 гостя</strong>
+          </div>
+          <div class="summary-row">
+            <span>Предоплата сейчас:</span>
+            <strong style="color: #98D8AA;">0 ₽ (оплата при заселении)</strong>
+          </div>
+          <div class="summary-total">
+            <span>Итого за проживание:</span>
+            <strong id="sum-total">6 400 ₽</strong>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-on-dark-muted); margin-top: 1.25rem; line-height: 1.5;">
+            Адрес: Нижегородская область, с. Дивеево, ул. Заречная, 399. Бесплатная парковка, Wi-Fi, общая кухня и свежее бельё включены в стоимость.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const BOOKING_ROOMS = [
+      { id: "room-1", title: "Двухместная комната «Утренняя»", capacity: 2, price: 3200, img: "../img/room2-1.jpg", sub: "До 2 гостей · 1 этаж · Свой санузел" },
+      { id: "room-2", title: "Двухместная комната «Заречная»", capacity: 2, price: 3200, img: "../img/room2-1.jpg", sub: "До 2 гостей · 1 этаж · Свой санузел" },
+      { id: "room-3", title: "Семейная комната «Под сводом»", capacity: 4, price: 4800, img: "../img/room2-1.jpg", sub: "До 4 гостей · 2 этаж · Кровать + диван" },
+      { id: "room-4", title: "Большая семейная «Серафимовская»", capacity: 4, price: 5000, img: "../img/room2-1.jpg", sub: "До 4 гостей · 2 этаж · Просторная семейная" }
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const checkinEl = document.getElementById("b-checkin");
+      const checkoutEl = document.getElementById("b-checkout");
+      const guestsEl = document.getElementById("b-guests");
+      const roomsContainer = document.getElementById("booking-room-options");
+
+      const today = new Date();
+      const tmrw = new Date(today); tmrw.setDate(today.getDate() + 1);
+      const next3 = new Date(today); next3.setDate(today.getDate() + 3);
+      const toISO = (d) => d.toISOString().split("T")[0];
+
+      checkinEl.value = params.get("checkin") || toISO(tmrw);
+      checkoutEl.value = params.get("checkout") || toISO(next3);
+      if (params.get("guests")) guestsEl.value = params.get("guests");
+
+      let selectedRoomId = params.get("room") || (Number(guestsEl.value) > 2 ? "room-3" : "room-1");
+
+      const renderRoomOptions = () => {
+        roomsContainer.innerHTML = BOOKING_ROOMS.map(r => `
+          <label class="room-radio-card ${r.id === selectedRoomId ? 'is-selected' : ''}" data-id="${r.id}">
+            <img src="${r.img}" alt="${r.title}">
+            <div>
+              <input type="radio" name="room" value="${r.id}" ${r.id === selectedRoomId ? 'checked' : ''} style="display:none;">
+              <strong style="display:block; font-family:var(--font-serif); font-size:1.35rem;">${r.title}</strong>
+              <span style="font-size:0.85rem; color:var(--text-secondary);">${r.sub}</span>
+            </div>
+            <div style="text-align:right;">
+              <strong style="font-family:var(--font-serif); font-size:1.45rem;">${r.price.toLocaleString('ru-RU')} ₽</strong>
+              <span style="display:block; font-size:0.75rem; color:var(--text-muted);">за ночь</span>
+            </div>
+          </label>
+        `).join("");
+
+        roomsContainer.querySelectorAll(".room-radio-card").forEach(card => {
+          card.addEventListener("click", () => {
+            selectedRoomId = card.dataset.id;
+            renderRoomOptions();
+            updateSummary();
+          });
+        });
+      };
+
+      const updateSummary = () => {
+        const room = BOOKING_ROOMS.find(r => r.id === selectedRoomId) || BOOKING_ROOMS[0];
+        const d1 = new Date(checkinEl.value);
+        const d2 = new Date(checkoutEl.value);
+        const diffDays = Math.max(1, Math.round((d2 - d1) / (1000 * 60 * 60 * 24)));
+        const total = diffDays * room.price;
+
+        document.getElementById("sum-room").textContent = room.title;
+        document.getElementById("sum-dates").textContent = `${checkinEl.value} → ${checkoutEl.value}`;
+        document.getElementById("sum-nights").textContent = `${diffDays} ноч.`;
+        document.getElementById("sum-guests").textContent = `${guestsEl.value} чел.`;
+        document.getElementById("sum-total").textContent = `${total.toLocaleString("ru-RU")} ₽`;
+      };
+
+      checkinEl.addEventListener("change", updateSummary);
+      checkoutEl.addEventListener("change", updateSummary);
+      guestsEl.addEventListener("change", updateSummary);
+
+      renderRoomOptions();
+      updateSummary();
+
+      document.getElementById("booking-full-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const room = BOOKING_ROOMS.find(r => r.id === selectedRoomId) || BOOKING_ROOMS[0];
+        const name = document.getElementById("b-name").value;
+        const phone = document.getElementById("b-phone").value;
+        const comment = document.getElementById("b-comment").value;
+        const totalText = document.getElementById("sum-total").textContent;
+
+        const msg = `Здравствуйте! Хочу забронировать комнату в гостевом доме «Дивеевский паломник»:%0A` +
+          `• Комната: ${room.title}%0A` +
+          `• Заезд: ${checkinEl.value}%0A` +
+          `• Выезд: ${checkoutEl.value}%0A` +
+          `• Гостей: ${guestsEl.value}%0A` +
+          `• Итого: ${totalText}%0A` +
+          `• Имя: ${name}%0A` +
+          `• Телефон: ${phone}` +
+          (comment ? `%0A• Комментарий: ${comment}` : "");
+
+        const waLink = document.getElementById("whatsapp-confirm-link");
+        waLink.href = `https://wa.me/79302848469?text=${msg}`;
+        document.getElementById("booking-success-box").hidden = false;
+        document.getElementById("booking-success-box").scrollIntoView({ behavior: "smooth" });
+      });
+    });
+  </script>
+</body>
+</html>
+
