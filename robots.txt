@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://makariy1997.github.io/diveevskii_palomnik/sitemap.xml
