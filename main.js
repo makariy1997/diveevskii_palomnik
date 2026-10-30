@@ -77,7 +77,7 @@
   const fmt = n => n.toLocaleString('ru-RU');
   if (list && window.ROOMS) {
     list.innerHTML = ROOMS.map((r, i) => {
-      const pics = Array.from({ length: r.photos }, (_, k) => `img/${r.key}-${k + 1}.jpg`);
+      const pics = Array.from({ length: r.photos }, (_, k) => `https://anilibriabro.github.io/diveevo-palomnik/img/${r.key}-${k + 1}.jpg`);
       return `<article class="room">
         <div class="room__gallery">
           <div class="room__track" data-track>
@@ -124,7 +124,7 @@
   let cur = null;
   const show = () => {
     const r = ROOMS[cur.room];
-    boxImg.src = `img/${r.key}-${cur.k + 1}.jpg`;
+    boxImg.src = `https://anilibriabro.github.io/diveevo-palomnik/img/${r.key}-${cur.k + 1}.jpg`;
     boxImg.alt = `${r.name}, фото ${cur.k + 1}`;
   };
   document.addEventListener('click', e => {
