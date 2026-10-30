@@ -13,8 +13,8 @@
   --gold-hi: #d8b065;
   --line: rgba(29, 43, 51, .14);
 
-  --serif: 'Old Standard TT', 'Times New Roman', serif;
-  --sans: 'Golos Text', system-ui, sans-serif;
+  --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans: 'Plus Jakarta Sans', 'Golos Text', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   --wrap: 1180px;
   --gutter: clamp(16px, 4vw, 40px);

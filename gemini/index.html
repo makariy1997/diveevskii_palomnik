@@ -10,12 +10,10 @@
   <link rel="preload" as="image" href="../img/hero.jpg">
 
   <!-- Editorial Typography: Cormorant Garamond + Plus Jakarta Sans -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="../fonts/fonts.css">
   <link rel="stylesheet" href="styles.css">
-</head>
+<link rel="stylesheet" href="../legal.css"></head>
 <body>
 
   <div class="scroll-progress" aria-hidden="true"></div>
@@ -423,12 +421,7 @@
           </div>
 
           <div class="route-map-card" data-reveal style="--reveal-delay: 140ms">
-            <iframe
-              title="Карта расположения гостевого дома Дивеевский паломник"
-              src="https://yandex.ru/map-widget/v1/?ll=43.245280%2C55.031500&z=14&pt=43.245280,55.023460,pm2rdm~43.243500,55.040500,pm2blm"
-              loading="lazy"
-              allowfullscreen
-            ></iframe>
+            <div class="map-consent" data-src="https://yandex.ru/map-widget/v1/?ll=43.245280%2C55.031500&amp;z=14&amp;pt=43.245280,55.023460,pm2rdm~43.243500,55.040500,pm2blm" data-title="Карта расположения гостевого дома Дивеевский паломник"><div><p>Карта откроется во внешнем сервисе после вашего нажатия.</p><button type="button">Загрузить карту</button><p><small>Сервис может получить IP-адрес и технические сведения браузера.</small></p></div></div>
           </div>
         </div>
       </div>
@@ -477,8 +470,8 @@
             <a class="cta-phone-huge" href="tel:+79302848469">+7 930 284-84-69</a>
             <div class="cta-buttons-row">
               <a class="btn btn-primary" href="booking.html">Забронировать онлайн</a>
-              <a class="btn btn-light" href="https://wa.me/79302848469" rel="noopener" target="_blank">Написать в WhatsApp</a>
-              <a class="btn btn-light" href="https://www.instagram.com/diveevo_palomnik/" rel="noopener" target="_blank">Instagram</a>
+              <a class="btn btn--ghost" href="tel:+79302848469">Позвонить хозяевам</a>
+              <span class="legal-social"><a href="https://vk.com/" target="_blank" rel="noopener noreferrer">VK (добавить ссылку)</a><a href="https://t.me/" target="_blank" rel="noopener noreferrer">Telegram (добавить ссылку)</a><a href="https://max.ru/" target="_blank" rel="noopener noreferrer">MAX (добавить ссылку)</a></span>
             </div>
           </div>
         </div>
@@ -496,7 +489,7 @@
         <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ru" rel="noopener" target="_blank">CC BY-SA 4.0</a>. Источник: Wikimedia Commons.
       </p>
     </div>
-  </footer>
+  <div class="legal-links"><p>Оператор: ИП / самозанятый [ФИО] · ИНН [указать] · ОГРНИП [если применимо] · Email [указать]</p><p>Реестровый номер гостевого дома: [только присвоенный номер и официальная ссылка]</p><nav><a href="privacy.html">Политика обработки ПДн</a><a href="consent.html">Согласие на обработку ПДн</a><a href="offer.html">Правила проживания и бронирования</a></nav><p>Информация не является публичной офертой по ст. 437 ГК РФ; актуальная стоимость фиксируется при подтверждении.</p></div></footer>
 
   <!-- Floating Quick CTA Button -->
   <a href="booking.html" class="btn btn-primary floating-book-cta" aria-label="Забронировать комнату">
@@ -519,6 +512,6 @@
   </dialog>
 
   <script src="app.js"></script>
-</body>
+<script src="../legal.js" defer></script></body>
 </html>
 

@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="fonts/fonts.css?v=202610291808">
 <link rel="preload" as="image" href="img/hero.jpg">
 <link rel="stylesheet" href="styles.css?v=202610291808">
-</head>
+<link rel="stylesheet" href="legal.css"><link rel="stylesheet" href="fonts/fonts.css"></head>
 <body>
 
 <a class="skip" href="#main">К содержанию</a>
@@ -126,8 +126,8 @@
     <h2 id="steps-title">Как забронировать</h2>
     <ol class="steps__list">
       <li><h3>Выберите даты</h3><p>Нажмите «Забронировать» и укажите, когда приедете и сколько вас.</p></li>
-      <li><h3>Выберите комнату</h3><p>Система покажет свободные комнаты и цену за все ночи. Оставьте имя и телефон.</p></li>
-      <li><h3>Приезжайте</h3><p>Бронь подтверждается сразу. Предоплата не нужна — оплата при заселении.</p></li>
+      <li><h3>Выберите комнату</h3><p>Оставьте данные для связи — хозяева подтвердят наличие комнаты, даты и актуальную цену.</p></li>
+      <li><h3>Приезжайте</h3><p>Хозяева подтвердят бронь после согласования. Предоплата не нужна — оплата при заселении.</p></li>
     </ol>
     <a class="btn btn--gold" href="booking.html">Забронировать</a>
   </div>
@@ -196,7 +196,7 @@
       <a class="btn btn--line" href="https://yandex.ru/maps/?rtext=~55.02346%2C43.24528&amp;rtt=auto" target="_blank" rel="noopener">Построить маршрут в Яндекс Картах</a>
     </div>
     <div class="road__map">
-      <iframe title="Дом на карте" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=43.2280%2C55.0190%2C43.2600%2C55.0460&amp;layer=mapnik&amp;marker=55.02346%2C43.24528"></iframe>
+      <div class="map-consent" data-src="https://www.openstreetmap.org/export/embed.html?bbox=43.2280%2C55.0190%2C43.2600%2C55.0460&amp;layer=mapnik&amp;marker=55.02346%2C43.24528" data-title="Дом на карте"><div><p>Карта откроется во внешнем сервисе после вашего нажатия.</p><button type="button">Загрузить карту</button><p><small>Сервис может получить IP-адрес и технические сведения браузера.</small></p></div></div>
     </div>
   </div>
 </section>
@@ -206,7 +206,7 @@
     <h2 id="rules-title">Порядок в доме</h2>
     <div class="rules__grid">
       <div><h3>Заезд и выезд</h3><p>Заезд с 14:00, выезд до 12:00. Ранний заезд — по договорённости, если комната свободна.</p></div>
-      <div><h3>Оплата</h3><p>Предоплата не нужна: бронь подтверждается сразу, платите при заселении.</p></div>
+      <div><h3>Оплата</h3><p>Предоплата не нужна: оплатите проживание при заселении после подтверждения условий.</p></div>
       <div><h3>Тишина</h3><p>Дом для отдыха паломников. Просим не шуметь после 22:00 и не курить в доме.</p></div>
       <div><h3>Дети</h3><p>С детьми — пожалуйста. Четырёхместные комнаты с диваном удобны для семьи.</p></div>
     </div>
@@ -221,8 +221,8 @@
     <a class="contact__phone" href="tel:+79302848469">+7 930 284-84-69</a>
     <div class="contact__links">
       <a class="btn btn--gold" href="booking.html">Забронировать онлайн</a>
-      <a class="btn btn--ghost" href="https://wa.me/79302848469" target="_blank" rel="noopener">Написать в WhatsApp</a>
-      <a class="btn btn--ghost" href="https://www.instagram.com/diveevo_palomnik/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn btn--ghost" href="tel:+79302848469">Позвонить хозяевам</a>
+      <span class="legal-social"><a href="https://vk.com/" target="_blank" rel="noopener noreferrer">VK (добавить ссылку)</a><a href="https://t.me/" target="_blank" rel="noopener noreferrer">Telegram (добавить ссылку)</a><a href="https://max.ru/" target="_blank" rel="noopener noreferrer">MAX (добавить ссылку)</a></span>
     </div>
   </div>
 </section>
@@ -234,7 +234,7 @@
     <p>© <span data-year>2026</span> Гостевой дом «Дивеевский паломник». Дивеево, ул. Заречная, 399</p>
     <p class="foot__credits">Фото Дивеева: Олег Володин (общественное достояние); «Отражение в пруду» — Г. Новинская, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ru" target="_blank" rel="noopener">CC BY-SA 4.0</a>. Источник: Wikimedia Commons.</p>
   </div>
-</footer>
+<div class="legal-links"><p>Оператор: ИП / самозанятый [ФИО] · ИНН [указать] · ОГРНИП [если применимо] · Email [указать]</p><p>Реестровый номер гостевого дома: [только присвоенный номер и официальная ссылка]</p><nav><a href="privacy.html">Политика обработки ПДн</a><a href="consent.html">Согласие на обработку ПДн</a><a href="offer.html">Правила проживания и бронирования</a></nav><p>Информация не является публичной офертой по ст. 437 ГК РФ; актуальная стоимость фиксируется при подтверждении.</p></div></footer>
 
 <a class="float-book" href="booking.html" data-float>Забронировать</a>
 
@@ -263,5 +263,5 @@
 
 <script src="rooms.js?v=202610291808"></script>
 <script src="main.js?v=202610291808"></script>
-</body>
+<script src="legal.js" defer></script></body>
 </html>
