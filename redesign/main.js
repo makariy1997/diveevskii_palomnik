@@ -78,7 +78,7 @@
     revealNodes.forEach(node => revealObserver.observe(node));
   } else revealNodes.forEach(node => node.classList.add('is-visible'));
 
-  const lqipStems = new Set(['hero', 'hero-1600', 'room2-1', 'room1-1', 'room3-1', 'room4-1', 'tower', 'pond', 'place-1', 'place-3', 'place-4', 'place-5', 'place-6', 'evening']);
+  const lqipStems = new Set(['room2-1', 'room1-1', 'room3-1', 'room4-1', 'tower', 'pond', 'place-1', 'place-3', 'place-4', 'place-5', 'place-6', 'evening']);
   const prepareImage = image => {
     const source = image.getAttribute('src') || '';
     const filename = source.split('/').pop() || '';
